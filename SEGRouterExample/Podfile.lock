@@ -1,0 +1,26 @@
+PODS:
+  - Expecta (0.2.3)
+  - RKSupport/RKPathTemplate (1.0.0)
+  - SEGRouter (0.1.0):
+    - RKSupport/RKPathTemplate (~> 1.0)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - Expecta
+  - RKSupport/RKPathTemplate (from `https://github.com/RestKit/RKSupport.git`)
+  - SEGRouter (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  RKSupport:
+    :git: https://github.com/RestKit/RKSupport.git
+  SEGRouter:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  RKSupport: ca46464b795946b2cc0214cf0e64f69cbdca3de1
+  SEGRouter: 151df63cb2c9e9adac60c234bbf2d541ca329733
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+
+COCOAPODS: 0.28.0

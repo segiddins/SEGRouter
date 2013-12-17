@@ -1,0 +1,11 @@
+inhibit_all_warnings!
+
+target "SEGRouterExample" do
+    pod 'RKSupport/RKPathTemplate', git: 'https://github.com/RestKit/RKSupport.git'
+    pod "SEGRouter", :path => "../"
+end
+
+target "SEGRouterTests", exclusive: true do
+    pod 'Specta'
+    pod 'Expecta'
+end
