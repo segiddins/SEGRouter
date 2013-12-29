@@ -15,7 +15,8 @@ profile
 DerivedData
 .idea/
 *.hmap
-xcshareddata/
+*.xccheckout
+SEGRouterExample/SEGRouterExample.xcworkspace
 
 #CocoaPods
 Pods
