@@ -106,7 +106,7 @@
     expect(byeActionCalled).to.beFalsy();
 }
 
-- (void)testHandlingURLWithNoMathcesReturnsNo
+- (void)testHandlingURLWithNoMatchesReturnsNo
 {
     __block BOOL actionCalled = NO;
     [self.router addRoute:@"hi" action:^BOOL(NSDictionary *vars) {
@@ -117,6 +117,25 @@
     NSURL *url = [NSURL URLWithString:@"scheme:bye"];
     expect([self.router handleURL:url]).to.beFalsy();
     expect(actionCalled).to.beFalsy();
+}
+
+- (void)testAddingSubrouteAddsAndCallsBothRoutes
+{
+    __block BOOL hiActionCalled = NO, byeActionCalled = NO;
+    [self.router addRoute:@"hi" action:^BOOL(NSDictionary *vars) {
+        hiActionCalled = YES;
+        return YES;
+    } subroutes:^(SEGRoute *route) {
+        [route addSubroute:@"bye" action:^BOOL(NSDictionary *vars) {
+            byeActionCalled = YES;
+            return YES;
+        } subroutes:nil];
+    }];
+    NSURL *url = [NSURL URLWithString:@"scheme:hi/bye"];
+    expect([self.router handleURL:url]).to.beTruthy();
+    expect(hiActionCalled).to.beTruthy();
+    expect(byeActionCalled).to.beTruthy();
+    expect(self.router.routes).to.haveCountOf(2);
 }
 
 @end

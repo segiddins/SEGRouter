@@ -32,7 +32,7 @@
 
 @interface SEGRouter : NSObject
 
-+ (instancetype)defaultRouter;
++ (instancetype)routerWithScheme:(NSString *)scheme;
 
 // Router will traverse through subroutes and add them
 - (void)addRoute:(NSString *)route action:(BOOL (^)(NSDictionary *vars))action subroutes:(void (^)(SEGRoute *route))subrouteCreation;

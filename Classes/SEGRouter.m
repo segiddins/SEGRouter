@@ -46,17 +46,25 @@
 
 @property (nonatomic, weak) SEGRoute *parentRoute;
 
+- (void)open:(NSDictionary *)variables;
+
 @end
 
 @implementation SEGRouter
 
-+ (instancetype)defaultRouter
++ (instancetype)routerWithScheme:(NSString *)scheme
 {
-    static SEGRouter *router;
+    NSAssert(scheme, @"Scheme can't be `nil`");
+    static NSMutableDictionary *dictionary;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        router = [[self alloc] init];
+        dictionary = [NSMutableDictionary dictionary];
     });
+    SEGRouter *router = dictionary[scheme];
+    if (!router) {
+        router = [self new];
+        dictionary[scheme] = router;
+    }
     return router;
 }
 
@@ -87,7 +95,7 @@
     __block BOOL success;
     [self.mutableRoutes enumerateObjectsUsingBlock:^(SEGRoute *route, BOOL *stop) {
         if ((success = [route.pathTemplate matchesPath:URL.resourceSpecifier variables:&variables])) {
-            route.action(variables);
+            [route open:variables];
             *stop = YES;
         }
     }];
@@ -113,12 +121,20 @@
     return route;
 }
 
+- (id)init
+{
+    if (!(self = [super init])) return nil;
+    self.subroutes = [NSMutableArray array];
+    return self;
+}
+
 - (void)addSubroute:(NSString *)subroute
              action:(BOOL (^)(NSDictionary *))action
           subroutes:(void (^)(SEGRoute *))subrouteCreation
 {
     NSString *path = [[self.pathTemplate valueForKey:@"pathTemplate"] stringByAppendingPathComponent:subroute];
     SEGRoute *route = [[self class] routeWithPath:path action:action];
+    if (subrouteCreation) subrouteCreation(route);
     route.parentRoute = self;
     [self.subroutes addObject:route];
 }
@@ -136,6 +152,11 @@
         [routes addObjectsFromArray:[subroute allRoutes]];
     }
     return routes;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@ %p: pathTemplate:%@>", NSStringFromClass(self.class), self, self.pathTemplate];
 }
 
 @end

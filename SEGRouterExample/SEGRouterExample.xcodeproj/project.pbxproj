@@ -21,9 +21,6 @@
 		C005D86C185F6A75006FDCBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C005D854185F6A75006FDCBE /* UIKit.framework */; };
 		C005D874185F6A75006FDCBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C005D872185F6A75006FDCBE /* InfoPlist.strings */; };
 		C005D876185F6A75006FDCBE /* SEGRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C005D875185F6A75006FDCBE /* SEGRouterTests.m */; };
-		C005D884185F6AA0006FDCBE /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C005D881185F6AA0006FDCBE /* .gitkeep */; };
-		C005D885185F6AA0006FDCBE /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C005D883185F6AA0006FDCBE /* .gitkeep */; };
-		C005D888185F6AB7006FDCBE /* SEGRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = C005D887185F6AB7006FDCBE /* SEGRouter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +240,11 @@
 				CLASSPREFIX = SEG;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Samuel E. Giddins";
+				TargetAttributes = {
+					C005D867185F6A75006FDCBE = {
+						TestTargetID = C005D84C185F6A75006FDCBE;
+					};
+				};
 			};
 			buildConfigurationList = C005D848185F6A75006FDCBE /* Build configuration list for PBXProject "SEGRouterExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -267,10 +269,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C005D884185F6AA0006FDCBE /* .gitkeep in Resources */,
 				C005D85B185F6A75006FDCBE /* InfoPlist.strings in Resources */,
 				C005D863185F6A75006FDCBE /* Images.xcassets in Resources */,
-				C005D885185F6AA0006FDCBE /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +352,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C005D888185F6AB7006FDCBE /* SEGRouter.m in Sources */,
 				C005D861185F6A75006FDCBE /* SEGAppDelegate.m in Sources */,
 				C005D85D185F6A75006FDCBE /* main.m in Sources */,
 			);
@@ -503,6 +502,7 @@
 			baseConfigurationReference = 05562A81C38042669E4E0B0D /* Pods-SEGRouterTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SEGRouterExample.app/SEGRouterExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -514,8 +514,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SEGRouterExampleTests/SEGRouterExampleTests-Info.plist";
+				INFOPLIST_FILE = "SEGRouterTests/SEGRouterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -525,6 +526,7 @@
 			baseConfigurationReference = 05562A81C38042669E4E0B0D /* Pods-SEGRouterTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SEGRouterExample.app/SEGRouterExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -532,8 +534,9 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SEGRouterExample/SEGRouterExample-Prefix.pch";
-				INFOPLIST_FILE = "SEGRouterExampleTests/SEGRouterExampleTests-Info.plist";
+				INFOPLIST_FILE = "SEGRouterTests/SEGRouterTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
