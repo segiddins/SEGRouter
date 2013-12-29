@@ -1,5 +1,6 @@
 # SEGRouter
 
+[![Build Status](https://travis-ci.org/segiddins/SEGRouter.png?branch=master)](https://travis-ci.org/segiddins/SEGRouter)
 [![Version](http://cocoapod-badges.herokuapp.com/v/SEGRouter/badge.png)](http://cocoadocs.org/docsets/SEGRouter)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SEGRouter/badge.png)](http://cocoadocs.org/docsets/SEGRouter)
 
@@ -22,5 +23,5 @@ Samuel E. Giddins, segiddins@segiddins.me
 
 ## License
 
-SEGRouter is available under the MIT license. See the LICENSE file for more info.
+SEGRouter is available under the BSD license. See the LICENSE file for more info.
 

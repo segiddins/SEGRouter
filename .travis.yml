@@ -1,0 +1,5 @@
+language: objective-c
+before_install:
+    - brew bundle
+script:
+    - ./test

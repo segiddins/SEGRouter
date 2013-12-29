@@ -7,21 +7,13 @@
 Pod::Spec.new do |s|
   s.name         = "SEGRouter"
   s.version      = "0.1.0"
-  s.summary      = "A short description of SEGRouter."
-  s.description  = <<-DESC
-                    An optional longer description of SEGRouter
-
-                    * Markdown format.
-                    * Don't worry about the indent, we strip it!
-                   DESC
-  s.homepage     = "http://EXAMPLE/NAME"
-  s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license      = 'MIT'
+  s.summary      = "Easy in-app URL routing"
+  s.homepage     = "https://github.com/segiddins/SEGRouter"
+  s.license      = 'BSD'
   s.author       = { "Samuel E. Giddins" => "segiddins@segiddins.me" }
-  s.source       = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/segiddins/SEGRouter", :tag => s.version.to_s }
 
   s.ios.deployment_target = '6.0'
-  s.osx.deployment_target = '10.8'
   s.requires_arc = true
 
   s.source_files = 'Classes'
@@ -32,3 +24,4 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'RKSupport/RKPathTemplate', '~> 1.0'
 end
+
